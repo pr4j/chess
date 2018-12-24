@@ -1,12 +1,15 @@
 package manager;
 
+import board.*;
+
 public class GameManager {
     private Long turnCounter;
 
     private int turn = 0;
 
     public GameManager() {
-        //set up the initial board.
+        ChessBoard CB = new ChessBoard();
+        CB.setup();
     }
 
     public void play(String initPos, String finPos) {
