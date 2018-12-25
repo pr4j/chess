@@ -32,16 +32,16 @@ public class ChessBoard {
     public void setupKing() {
         Cell k1 = new Cell(new King(0, 4, 0));
         Cell k2 = new Cell(new King(7, 4, 1));
-        this.board[0][4] = k1;
-        this.board[7][4] = k2;
+        this.board[0][3] = k1;
+        this.board[7][3] = k2;
 
     }
 
     public void setupQueen() {
         Cell q1 = new Cell(new Queen(0, 3, 0));
         Cell q2 = new Cell(new Queen(7, 3, 1));
-        this.board[0][3] = q1;
-        this.board[7][3] = q2;
+        this.board[0][4] = q1;
+        this.board[7][4] = q2;
 
     }
 
