@@ -1,6 +1,11 @@
 package board;
 
-import pieces.*;
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.Pawn;
+import pieces.Queen;
+import pieces.Rook;
 
 public class ChessBoard {
     public Cell[][] board;
@@ -84,9 +89,21 @@ public class ChessBoard {
         setupKnight();
     }
 
-    //public static void main(String[] args) {
-    //    ChessBoard c =new ChessBoard();
-    //    c.setup();
-    //}
+    public void printBoard() {
+        for (int i = 0; i < 8; ++i) {
+            printRow(i);
+        }
+    }
+
+    private void printRow(int r) {
+        for (int i = 0; i < 8; ++i) {
+            if (board[r][i] != null) {
+                System.out.print(board[r][i].p + " ");
+            } else {
+                System.out.print(" " + " ");
+            }
+        }
+        System.out.println();
+    }
 }
 

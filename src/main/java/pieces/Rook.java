@@ -11,4 +11,9 @@ public class Rook extends Piece {
         }
         return -1;
     }
+
+    @Override
+    public String toString() {
+        return "Rook" + "   [" + startString() + "]";
+    }
 }

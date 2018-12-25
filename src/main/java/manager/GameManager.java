@@ -1,6 +1,6 @@
 package manager;
 
-import board.*;
+import board.ChessBoard;
 
 public class GameManager {
     private Long turnCounter;
@@ -10,6 +10,7 @@ public class GameManager {
     public GameManager() {
         ChessBoard CB = new ChessBoard();
         CB.setup();
+        CB.printBoard();
     }
 
     public void play(String initPos, String finPos) {

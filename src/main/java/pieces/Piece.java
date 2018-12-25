@@ -17,4 +17,7 @@ public abstract class Piece {
         return -1;
     }
 
+    String startString() {
+        return (start == 0) ? "W" : "B";
+    }
 }
