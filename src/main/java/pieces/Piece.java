@@ -4,6 +4,7 @@ public abstract class Piece {
     public int row;
     public int column;
     public int start;
+    public boolean first = true;
 
     public Piece() {}
 
@@ -15,6 +16,10 @@ public abstract class Piece {
 
     public int validateMove() {
         return -1;
+    }
+
+    public String getName(){
+        return "P";
     }
 
     String startString() {

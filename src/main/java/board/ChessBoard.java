@@ -81,6 +81,11 @@ public class ChessBoard {
     }
 
     public void setup() {
+        for(int i =0;i<8;i++){
+            for(int j =0;j<8;j++){
+                this.board[i][j] = new Cell();
+            }
+        }
         setupPawns();
         setupKing();
         setupQueen();
@@ -97,10 +102,10 @@ public class ChessBoard {
 
     private void printRow(int r) {
         for (int i = 0; i < 8; ++i) {
-            if (board[r][i] != null) {
+            if (board[r][i].p != null) {
                 System.out.print(board[r][i].p + " ");
             } else {
-                System.out.print(" " + " ");
+                System.out.print("    " + "     ");
             }
         }
         System.out.println();
