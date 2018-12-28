@@ -12,6 +12,10 @@ public class Rook extends Piece {
         return -1;
     }
 
+    public String getName() {
+        return "Rook";
+    }
+
     @Override
     public String toString() {
         return "Rook" + "   [" + startString() + "]";

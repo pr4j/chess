@@ -12,6 +12,10 @@ public class Queen extends Piece {
         return -1;
     }
 
+    public String getName() {
+        return "Queen";
+    }
+
     @Override
     public String toString() {
         return "Queen" + "  [" + startString() + "]";

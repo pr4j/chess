@@ -12,6 +12,10 @@ public class Knight extends Piece {
         return -1;
     }
 
+    public String getName() {
+        return "Knight";
+    }
+
     @Override
     public String toString() {
         return "Knight" + " [" + startString() + "]";

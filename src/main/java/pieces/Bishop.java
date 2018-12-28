@@ -12,6 +12,10 @@ public class Bishop extends Piece {
         return -1;
     }
 
+    public String getName() {
+        return "Bishop";
+    }
+
     @Override
     public String toString() {
         return "Bishop" + " [" + startString() + "]";
