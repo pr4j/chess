@@ -63,8 +63,8 @@ public class GameManager {
         Piece prev = this.CB.board[(int) this.move.end.getKey()][(int) this.move.end.getValue()].p;
         if (initCol != finCol
                 && prev.start!=current.start
-                && prev.getName() == "Pawn"
-                && current.getName() == "Pawn") {
+                && prev.getName().equals("Pawn")
+                && current.getName().equals("Pawn")) {
             System.out.println();
             System.out.println(prev + ": captured");
             System.out.println();
