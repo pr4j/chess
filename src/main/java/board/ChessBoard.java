@@ -105,7 +105,7 @@ public class ChessBoard {
             if (board[r][i].p != null) {
                 System.out.print(board[r][i].p + " ");
             } else {
-                System.out.print("    " + "     ");
+                System.out.print("           ");
             }
         }
         System.out.println();

@@ -3,19 +3,19 @@ package util;
 import board.ChessBoard;
 import board.Move;
 import javafx.util.Pair;
-import pieces.*;
+import pieces.Piece;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class util {
 
-    Set<Pair> a = new HashSet<Pair>();
+    Set<Pair> a = new HashSet<>();
 
     public Set<Pair> pawnMoves(Pair<Integer, Integer> pos, ChessBoard CB, Move prevMove) {
         int row = pos.getKey();
         int col = pos.getValue();
-        Set<Pair> moves = new HashSet<Pair>();
+        Set<Pair> moves = new HashSet<>();
         Piece pawn = CB.board[row][col].p;
         Piece prev = prevMove.p;
 
@@ -35,30 +35,30 @@ public class util {
 
         if(pawn.start==0) {
             if (scenario1) {
-                moves.add(new Pair(row + 1, col));
+                moves.add(new Pair<>(row + 1, col));
             }
             if (scenario2) {
-                moves.add(new Pair(row + 2, col));
+                moves.add(new Pair<>(row + 2, col));
             }
-            if (scenario3 && (prevMove.start.equals(new Pair(6, col - 1)))) {
-                moves.add(new Pair(row + 1, col - 1));
+            if (scenario3 && (prevMove.start.equals(new Pair<>(6, col - 1)))) {
+                moves.add(new Pair<>(row + 1, col - 1));
             }
-            else if (scenario3 &&  prevMove.start.equals(new Pair(6, col + 1))){
-                moves.add(new Pair(row + 1, col + 1));
+            else if (scenario3 &&  prevMove.start.equals(new Pair<>(6, col + 1))){
+                moves.add(new Pair<>(row + 1, col + 1));
             }
         }
         else{
             if (scenario4) {
-                moves.add(new Pair(row - 1, col));
+                moves.add(new Pair<>(row - 1, col));
             }
             if (scenario5) {
-                moves.add(new Pair(row - 2, col));
+                moves.add(new Pair<>(row - 2, col));
             }
-            if (scenario6 && (prevMove.start.equals(new Pair(1, col - 1)))) {
-                moves.add(new Pair(row - 1, col - 1));
+            if (scenario6 && (prevMove.start.equals(new Pair<>(1, col - 1)))) {
+                moves.add(new Pair<>(row - 1, col - 1));
             }
-            else if (scenario6 &&  prevMove.start.equals(new Pair(1, col + 1))){
-                moves.add(new Pair(row - 1, col + 1));
+            else if (scenario6 &&  prevMove.start.equals(new Pair<>(1, col + 1))){
+                moves.add(new Pair<>(row - 1, col + 1));
             }
         }
         return moves;
@@ -68,6 +68,4 @@ public class util {
         Set<Pair> moves = pawnMoves( pos, CB, prevMove);
         return moves;
     }
-
-
 }
