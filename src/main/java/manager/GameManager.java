@@ -31,17 +31,22 @@ public class GameManager {
         int finCol = (int) finPos.getValue();
 
         if (areValidPositions(initPos, finPos)) {
+            System.out.println(String.format("STUB: Valid init=%d,%d fin=%d,%d.", (int) initPos.getKey(),
+                    (int) initPos.getValue(), (int) finPos.getKey(), (int) finPos.getValue()));
             updateBoard(initPos, finPos);
             this.move = new Move(initPos, finPos, this.CB.board[finRow][finCol].p);
         } else {
-            //System.err.println(String.format("STUB: Log error: Invalid positions init=%s fin=%s", initPos, finPos));
+            System.err.println(String.format(" Log error: Invalid positions init=%d,%d fin=%d,%d.", (int) initPos.getKey(),
+                    (int) initPos.getValue(), (int) finPos.getKey(), (int) finPos.getValue()));
         }
     }
 
     private boolean areValidPositions(Pair<Integer, Integer> initPos, Pair<Integer, Integer> finPos) {
-        System.out.println(String.format("STUB: Valid init=%d,%d fin=%d,%d.", (int) initPos.getKey(),
-                (int) initPos.getValue(), (int) finPos.getKey(), (int) finPos.getValue()));
+
         Set<Pair> validate = new util().scan(initPos, this.CB, this.move);
+        if(validate==null){
+            return false;
+        }
         for (Iterator<Pair> it = validate.iterator(); it.hasNext(); ) {
             Pair f = it.next();
             //System.out.println( f.getKey().toString() + f.getValue().toString());
