@@ -16,7 +16,7 @@ import static java.util.stream.Collectors.joining;
 public class GameManager {
     private static final Logger log = LoggerFactory.getLogger(GameManager.class);
 
-    ChessBoard CB;
+    public ChessBoard CB;
 
     Move move;
     //Set<Move> moves = new HashSet<>();
