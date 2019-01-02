@@ -1,4 +1,4 @@
-package board;
+package Board;
 
 import com.google.common.base.Objects;
 

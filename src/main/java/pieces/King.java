@@ -1,4 +1,4 @@
-package pieces;
+package Pieces;
 
 public class King extends Piece {
 
@@ -6,10 +6,8 @@ public class King extends Piece {
         super(row, column, start);
     }
 
-    public int validateMove() {
-        if (super.start == 0) {
-        }
-        return -1;
+    public String getName() {
+        return "King";
     }
 
     @Override

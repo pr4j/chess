@@ -1,6 +1,6 @@
-package board;
+package Board;
 
-import pieces.Piece;
+import Pieces.Piece;
 
 public class Cell {
     public Piece p;

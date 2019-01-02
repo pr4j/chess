@@ -1,11 +1,11 @@
-package board;
+package Board;
 
-import pieces.Bishop;
-import pieces.King;
-import pieces.Knight;
-import pieces.Pawn;
-import pieces.Queen;
-import pieces.Rook;
+import Pieces.Bishop;
+import Pieces.King;
+import Pieces.Knight;
+import Pieces.Pawn;
+import Pieces.Queen;
+import Pieces.Rook;
 
 public class ChessBoard {
     public Cell[][] board;
@@ -30,16 +30,16 @@ public class ChessBoard {
     }
 
     public void setupKing() {
-        Cell k1 = new Cell(new King(0, 4, 0));
-        Cell k2 = new Cell(new King(7, 4, 1));
+        Cell k1 = new Cell(new King(0, 3, 0));
+        Cell k2 = new Cell(new King(7, 3, 1));
         this.board[0][3] = k1;
         this.board[7][3] = k2;
 
     }
 
     public void setupQueen() {
-        Cell q1 = new Cell(new Queen(0, 3, 0));
-        Cell q2 = new Cell(new Queen(7, 3, 1));
+        Cell q1 = new Cell(new Queen(0, 4, 0));
+        Cell q2 = new Cell(new Queen(7, 4, 1));
         this.board[0][4] = q1;
         this.board[7][4] = q2;
 

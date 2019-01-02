@@ -1,12 +1,11 @@
-package chess;
+package Chess;
 
-import board.Position;
+import Board.Position;
 import com.google.common.collect.Maps;
-import manager.GameManager;
+import Manager.GameManager;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,9 +52,19 @@ public class App {
         App app = new App();
         gameManagerMap.put(0, new GameManager());
 
-        app.play(0, new Position(1,0), new Position(2,0));
+        //app.play(0, new Position(1,0), new Position(2,0));
+
+        app.play(0, new Position(0,1), new Position(2,2));
+        app.play(0, new Position(6,0), new Position(4,0));
+        app.play(0, new Position(2,2), new Position(4,1));
+        app.play(0, new Position(4,0), new Position(3,0));
+        app.play(0, new Position(4,1), new Position(3,3));
+        app.play(0, new Position(3,0), new Position(2,0));
+        app.play(0, new Position(3,3), new Position(5,2));
+        app.play(0, new Position(6,3), new Position(5,2));
 
         tomcat.getServer().await();
+
     }
 
     // Public Web API
