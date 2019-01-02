@@ -94,21 +94,28 @@ public class ChessBoard {
         setupKnight();
     }
 
-    public void printBoard() {
+    public String printBoard() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; ++i) {
-            printRow(i);
+            sb.append(printRow(i));
         }
+        return sb.toString();
     }
 
-    private void printRow(int r) {
+    private String printRow(int r) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; ++i) {
             if (board[r][i].p != null) {
+                sb.append(board[r][i].p + " ");
                 System.out.print(board[r][i].p + " ");
             } else {
+                sb.append("           ");
                 System.out.print("           ");
             }
         }
         System.out.println();
+        sb.append("\n");
+        return sb.toString();
     }
 }
 

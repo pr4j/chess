@@ -21,8 +21,16 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.14'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.14'
+    compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.1'
+    compile group: 'org.apache.tomcat', name: 'tomcat-jasper-el', version: '9.0.14'
+    compile group: 'org.apache.tomcat', name: 'tomcat-jsp-api', version: '9.0.14'
+
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    
     // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:26.0-jre'
+    compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
@@ -30,3 +38,13 @@ dependencies {
 
 // Define the main class for the application
 mainClassName = 'chess.App'
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
