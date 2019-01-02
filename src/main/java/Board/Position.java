@@ -27,8 +27,8 @@ public class Position {
 
     @Override
     public String toString() {
-        final String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String alphabet = "abcdefgh";
 
-        return alphabet.charAt(y) + String.valueOf(8 - x);
+        return alphabet.charAt(7 - y) + String.valueOf(x);
     }
 }

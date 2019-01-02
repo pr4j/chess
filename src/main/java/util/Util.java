@@ -18,27 +18,27 @@ public class Util {
 
     Set<Position> a = new HashSet<>();
 
-    public Set<Pair> pawnCaptures(Pair<Integer, Integer> pos, ChessBoard CB, Move prevMove) {
-        int row = pos.getKey();
-        int col = pos.getValue();
+    public Set<Position> pawnCaptures(Position pos, ChessBoard CB, Move prevMove) {
+        int row = pos.x;
+        int col = pos.y;
 
-        Set<Pair> moves = new HashSet<>();
+        Set<Position> moves = new HashSet<>();
         Piece pawn = CB.board[row][col].p;
 
         if (pawn.start == 0) {
             if (row + 1 < 8 && col + 1 < 8 && CB.board[row + 1][col + 1].p != null && CB.board[row + 1][col + 1].p.start == 1)
-                moves.add(new Pair<>(row + 1, col + 1));
+                moves.add(new Position(row + 1, col + 1));
             if (row + 1 < 8 && col - 1 > -1 && CB.board[row + 1][col - 1].p != null && CB.board[row + 1][col - 1].p.start == 1)
-                moves.add(new Pair<>(row + 1, col - 1));
+                moves.add(new Position(row + 1, col - 1));
         } else {
             //System.out.print("st" + row);System.out.print(col);System.out.print("   ");
             if (row - 1 > -1 && col + 1 < 8 && CB.board[row - 1][col + 1].p != null && CB.board[row - 1][col + 1].p.start == 0)
-                moves.add(new Pair<>(row - 1, col + 1));
+                moves.add(new Position(row - 1, col + 1));
             if (row - 1 > -1 && col - 1 > -1 && CB.board[row - 1][col - 1].p != null && CB.board[row - 1][col - 1].p.start == 0)
-                moves.add(new Pair<>(row - 1, col - 1));
+                moves.add(new Position(row - 1, col - 1));
         }
-        for (Iterator<Pair> it = moves.iterator(); it.hasNext(); ) {
-            Pair f = it.next();
+        for (Iterator<Position> it = moves.iterator(); it.hasNext(); ) {
+            Position f = it.next();
             //System.out.print( f.getKey().toString() + f.getValue().toString() + "  ");
         }
         //System.out.println();
@@ -242,12 +242,17 @@ public class Util {
     }
 
 
-    public Set<Position> scan(Position pos, ChessBoard CB, Move prevMove) {
-        Set<Position> moves;
+    public Set<Position> scan(Position pos, ChessBoard CB, Move prevMove, int forCheck) {
+        Set<Position> moves = new HashSet<>();
         if (CB.board[pos.x][pos.y].p == null) {
             moves = null;
         } else if (CB.board[pos.x][pos.y].p.getName().equals("Pawn")) {
-            moves = pawnMoves(pos, CB, prevMove);
+            if(forCheck==0) {
+                moves = pawnMoves(pos, CB, prevMove);
+            }
+            Set<Position> temp = pawnCaptures(pos, CB, prevMove);
+            if (temp != null)
+                moves.addAll(temp);
         } else if (CB.board[pos.x][pos.y].p.getName().equals("Rook")) {
             moves = rookMoves(pos, CB, prevMove);
         } else if (CB.board[pos.x][pos.y].p.getName().equals("Bishop")) {
@@ -286,7 +291,8 @@ public class Util {
                 int row = CB.board[i][j].p.row;
                 int col = CB.board[i][j].p.column;
                 Position Pos = new Position(row, col);
-                Set<Position> temp = scan(Pos, CB, prevMove);
+                Set<Position> temp = scan(Pos, CB, prevMove, 1);
+                if(temp!=null)
                 moves.addAll(temp);
             }
         }
@@ -313,7 +319,8 @@ public class Util {
                 int col = CB.board[i][j].p.column;
                 //System.out.print(row);System.out.println(col);
                 Position Pos = new Position(row, col);
-                Set<Position> temp = scan(Pos, CB, prevMove);
+                Set<Position> temp = scan(Pos, CB, prevMove, 1);
+                if(temp!=null)
                 moves.addAll(temp);
             }
         }

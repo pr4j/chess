@@ -56,7 +56,7 @@ public class GameManager {
         Piece piece = this.CB.board[initPos.x][initPos.y].p;
 
         if (piece == null || this.turn != piece.start) return false;
-        Set<Position> validate = new Util().scan(initPos, CB, move);
+        Set<Position> validate = new Util().scan(initPos, CB, move, 0);
         if (validate == null) {
             return false;
         }
